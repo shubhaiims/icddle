@@ -1,9 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+const os = require("os");
 
 const ROOT = path.join(__dirname, "..");
-const STORAGE_DIR = path.join(__dirname, "storage");
+const STORAGE_DIR = process.env.ICDDLE_STORAGE_DIR || (process.env.VERCEL ? path.join(os.tmpdir(), "icddle-storage") : path.join(__dirname, "storage"));
 const DAILY_DIR = path.join(STORAGE_DIR, "daily");
 const USERS_DIR = path.join(STORAGE_DIR, "users");
 const INTERACTIONS_FILE = path.join(STORAGE_DIR, "interactions.ndjson");

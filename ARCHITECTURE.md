@@ -31,6 +31,7 @@ Important API calls:
 Files:
 
 - `server.js`
+- `api/` Vercel serverless function entrypoints
 - `backend/aiCaseGenerator.js`
 - `backend/data/case-templates.json`
 - `backend/data/diagnosis-rules.json`
@@ -74,3 +75,11 @@ When adding a real LLM, keep the same boundary:
 5. Frontend only consumes the saved case JSON.
 
 Do not let the frontend call the AI provider directly. Keep keys, prompts, moderation, and audit logs in the backend.
+
+## Vercel Deployment Note
+
+The `/api` directory exposes Vercel Functions for deployment. Vercel serverless file writes should be treated as temporary, so the deployed MVP uses deterministic daily generation and temporary storage. For real long-term personalization, move these stores to Vercel KV, Postgres, or another persistent database:
+
+- `backend/storage/daily/`
+- `backend/storage/users/`
+- `backend/storage/interactions.ndjson`

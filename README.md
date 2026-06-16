@@ -58,6 +58,28 @@ You can still open `index.html` directly in a browser for a static fallback, but
 - Logs interactions in `backend/storage/interactions.ndjson`.
 - Adapts easy vs hard case selection from attempts, wins, and revision misses.
 
+## Deploy To Vercel
+
+The repo includes Vercel Functions in `api/` and a `vercel.json` config.
+
+CLI path:
+
+```bash
+npm run check
+npx vercel
+npx vercel --prod
+```
+
+Dashboard path:
+
+1. Import `https://github.com/shubhaiims/icddle` in Vercel.
+2. Framework preset: Other.
+3. Build command: leave empty, or use `npm run check`.
+4. Output directory: leave empty.
+5. Deploy.
+
+Vercel file writes are temporary in serverless functions. For production-grade adaptive learning, connect Vercel KV or Postgres for daily cases, users, and interactions.
+
 ## ICD-11 Source Notes
 
 - Codes and titles are based on the WHO ICD-11 MMS 2024-01 simple tabulation and ICD-11 browser.
