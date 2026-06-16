@@ -34,10 +34,29 @@ This MVP changes the product direction for Indian psychiatry learners:
 - `app.js` - case data, diagnosis search, game state, archive, stats, and share text.
 - `assets/logo.svg` - original visual mark.
 - `CASE_AUTHORING.md` - ICD-11 case-writing guide for AI-assisted case generation.
+- `server.js` - dependency-free Node backend and static file server.
+- `backend/` - file-backed daily generation, interaction storage, and adaptive case rules.
+- `ARCHITECTURE.md` - frontend/backend split and AI generation boundary.
 
 ## Run
 
-Open `index.html` in a browser. No build step or dependency install is required.
+Recommended:
+
+```bash
+npm start
+```
+
+Then open `http://localhost:3000`.
+
+You can still open `index.html` directly in a browser for a static fallback, but adaptive daily generation needs the backend.
+
+## Backend Behaviour
+
+- Generates 10 free daily cases per user.
+- Stores the generated daily set in `backend/storage/daily/`.
+- Stores user performance in `backend/storage/users/`.
+- Logs interactions in `backend/storage/interactions.ndjson`.
+- Adapts easy vs hard case selection from attempts, wins, and revision misses.
 
 ## ICD-11 Source Notes
 

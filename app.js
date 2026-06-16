@@ -538,13 +538,60 @@ const cases = [
     explanation: "Multiple biological and cognitive depressive symptoms, functional impairment, and passive death wishes without psychosis support ICD-11 6A70.3 Single Episode Depressive Disorder, Severe, without Psychotic Symptoms.",
     differentials: ["Postpartum psychosis", "Adjustment disorder", "Hypothyroidism"],
     learning: "Perinatal context changes risk assessment and care planning, but the episode is still diagnosed from depressive syndrome severity and psychotic symptoms."
+  },
+  {
+    id: "panic-metro-ed",
+    number: 9,
+    setting: "Emergency medicine referral",
+    focus: "Panic attacks",
+    diagnosisId: "6b01",
+    clues: [
+      "A 26-year-old software engineer from Hyderabad has visited the emergency department three times for sudden chest tightness and breathlessness.",
+      "Each spell peaks within minutes with palpitations, sweating, trembling, dizziness, and fear that he is about to die.",
+      "ECG, thyroid testing, and basic medical evaluation have not shown a cardiac or endocrine cause.",
+      "The attacks now occur unexpectedly, including once while sitting quietly at home.",
+      "He has started avoiding the metro and keeps checking the nearest hospital route before leaving home.",
+      "Recurrent unexpected panic attacks followed by persistent worry and behaviour change point to this anxiety disorder."
+    ],
+    explanation: "Recurrent unexpected panic attacks, negative relevant medical evaluation, ongoing fear of further attacks, and avoidance support ICD-11 6B01 Panic Disorder.",
+    differentials: ["Cardiac arrhythmia", "Hyperthyroidism", "Social anxiety disorder"],
+    learning: "Panic disorder often presents first in emergency or medical settings. The diagnosis depends on recurrent unexpected attacks plus persistent worry or behaviour change."
+  },
+  {
+    id: "social-anxiety-viva",
+    number: 10,
+    setting: "Medical college counselling clinic",
+    focus: "Social fear",
+    diagnosisId: "6b04",
+    clues: [
+      "A 21-year-old MBBS student from Kochi seeks help after repeatedly skipping bedside case presentations.",
+      "Before viva sessions, he worries classmates and faculty will notice his shaking voice and think he is incompetent.",
+      "He avoids asking questions in seminars, eating in the canteen, and answering phone calls in front of hostel mates.",
+      "The fear has persisted since first year and is not limited to one recent stressful event.",
+      "There are no unexpected panic attacks outside social scrutiny and no psychotic symptoms.",
+      "Persistent fear of negative evaluation with avoidance and impairment in social-performance situations is the key diagnostic anchor."
+    ],
+    explanation: "Marked fear of scrutiny, negative evaluation, avoidance, persistence, and academic-social impairment support ICD-11 6B04 Social Anxiety Disorder.",
+    differentials: ["Panic disorder", "Agoraphobia", "Autism spectrum disorder"],
+    learning: "The core memory hook is fear of scrutiny and negative evaluation, not simply shyness or one bad performance."
   }
 ];
 
+const DAILY_FREE_CASES = 10;
 const MAX_CLUES = 6;
+const USER_ID_KEY = "icddle-user-id";
+const fallbackCases = cases.map((item) => ({
+  ...item,
+  clues: [...item.clues],
+  differentials: [...item.differentials]
+}));
 const appState = {
   mode: localStorage.getItem("icddle-mode") || "classic",
   activeIndex: getDailyCaseIndex(),
+  userId: getOrCreateUserId(),
+  dailyDate: getIndiaDate(),
+  backendOnline: false,
+  profileSummary: null,
   revealed: 1,
   guesses: [],
   completed: false,
@@ -593,8 +640,9 @@ const elements = {
 
 init();
 
-function init() {
+async function init() {
   bindEvents();
+  await loadDailyCases();
   loadProgress();
   render();
 }
@@ -607,9 +655,11 @@ function bindEvents() {
   document.addEventListener("click", handleDocumentClick);
 
   document.querySelectorAll(".mode-button").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       appState.mode = button.dataset.mode;
       localStorage.setItem("icddle-mode", appState.mode);
+      appState.activeIndex = 0;
+      await loadDailyCases();
       loadProgress();
       render();
     });
@@ -620,7 +670,7 @@ function bindEvents() {
   elements.archiveButton.addEventListener("click", openArchive);
   elements.statsButton.addEventListener("click", openStats);
   elements.todayButton.addEventListener("click", () => {
-    appState.activeIndex = getDailyCaseIndex();
+    appState.activeIndex = 0;
     loadProgress();
     render();
   });
@@ -634,17 +684,17 @@ function bindEvents() {
 
 function render() {
   const activeCase = getActiveCase();
+  if (!activeCase) return;
   const diagnosis = getDiagnosis(activeCase.diagnosisId);
-  const indiaDate = getIndiaDate();
 
-  elements.caseNumber.textContent = `Case ${activeCase.number}`;
-  elements.caseDate.textContent = appState.activeIndex === getDailyCaseIndex() ? indiaDate : "Practice";
+  elements.caseNumber.textContent = `Case ${activeCase.number}/${DAILY_FREE_CASES}`;
+  elements.caseDate.textContent = appState.dailyDate;
   elements.caseSetting.textContent = activeCase.setting;
   elements.caseFocus.textContent = activeCase.focus;
   elements.progressBar.style.width = `${(appState.revealed / MAX_CLUES) * 100}%`;
   elements.attemptCount.textContent = String(appState.guesses.length);
   elements.clueCount.textContent = `${appState.revealed}/${MAX_CLUES}`;
-  elements.modeLabel.textContent = appState.mode === "classic" ? "Classic" : "Exam";
+  elements.modeLabel.textContent = appState.mode === "classic" ? "Classic" : "Hard";
 
   document.querySelectorAll(".mode-button").forEach((button) => {
     const active = button.dataset.mode === appState.mode;
@@ -731,6 +781,13 @@ function handleRevisionAnswer(prompt, selectedIndex) {
 
   const correct = selectedIndex === prompt.answer;
   elements.revisionFeedback.textContent = `${correct ? "Correct." : "Not quite."} ${prompt.explanation}`;
+  logInteraction({
+    event: "revision_answered",
+    caseId: getActiveCase().id,
+    diagnosisId: getActiveCase().diagnosisId,
+    mode: appState.mode,
+    correct
+  });
 }
 
 function handleGuess(event) {
@@ -759,12 +816,14 @@ function handleGuess(event) {
     appState.won = true;
     setFeedback("Correct diagnosis.", "good");
     updateStats(true);
+    logCaseCompletion();
   } else if (appState.guesses.length >= MAX_CLUES) {
     appState.completed = true;
     appState.won = false;
     appState.revealed = MAX_CLUES;
     setFeedback("Case complete. Review the answer below.", "bad");
     updateStats(false);
+    logCaseCompletion();
   } else {
     appState.revealed = Math.min(MAX_CLUES, appState.revealed + 1);
     setFeedback("Not the best fit. Another clue is open.", "bad");
@@ -962,10 +1021,7 @@ function getDiagnosis(id) {
 }
 
 function getDailyCaseIndex() {
-  const [year, month, day] = getIndiaDate().split("-").map(Number);
-  const start = Date.UTC(2026, 0, 1);
-  const today = Date.UTC(year, month - 1, day);
-  return Math.floor((today - start) / 86400000) % cases.length;
+  return 0;
 }
 
 function getIndiaDate(date = new Date()) {
@@ -1031,7 +1087,6 @@ function getStats() {
 
 function updateStats(won) {
   if (appState.statsUpdated) return;
-  if (appState.activeIndex !== getDailyCaseIndex()) return;
 
   const stats = getStats();
   const today = getIndiaDate();
@@ -1050,6 +1105,72 @@ function updateStats(won) {
 
   localStorage.setItem("icddle-stats", JSON.stringify(stats));
   appState.statsUpdated = true;
+}
+
+async function loadDailyCases() {
+  try {
+    const response = await fetch(`/api/daily-cases?userId=${encodeURIComponent(appState.userId)}&mode=${encodeURIComponent(appState.mode)}`);
+    if (!response.ok) throw new Error("Daily case API unavailable");
+    const payload = await response.json();
+    if (!Array.isArray(payload.cases) || payload.cases.length === 0) {
+      throw new Error("Daily case API returned no cases");
+    }
+
+    cases.splice(0, cases.length, ...payload.cases);
+    appState.dailyDate = payload.date || getIndiaDate();
+    appState.profileSummary = payload.profileSummary || null;
+    appState.backendOnline = true;
+    appState.activeIndex = Math.min(appState.activeIndex, cases.length - 1);
+  } catch (error) {
+    cases.splice(0, cases.length, ...fallbackCases);
+    appState.dailyDate = getIndiaDate();
+    appState.profileSummary = null;
+    appState.backendOnline = false;
+    appState.activeIndex = Math.min(appState.activeIndex, cases.length - 1);
+  }
+}
+
+function logCaseCompletion() {
+  const activeCase = getActiveCase();
+  logInteraction({
+    event: "case_completed",
+    caseId: activeCase.id,
+    diagnosisId: activeCase.diagnosisId,
+    mode: appState.mode,
+    won: appState.won,
+    attempts: appState.guesses.length,
+    revealed: appState.revealed,
+    guesses: appState.guesses.map((guess) => guess.id)
+  });
+}
+
+async function logInteraction(payload) {
+  if (!appState.backendOnline) return;
+
+  try {
+    await fetch("/api/interactions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...payload,
+        userId: appState.userId,
+        date: appState.dailyDate
+      })
+    });
+  } catch (error) {
+    appState.backendOnline = false;
+  }
+}
+
+function getOrCreateUserId() {
+  const existing = localStorage.getItem(USER_ID_KEY);
+  if (existing) return existing;
+
+  const generated = globalThis.crypto?.randomUUID
+    ? globalThis.crypto.randomUUID()
+    : `user-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  localStorage.setItem(USER_ID_KEY, generated);
+  return generated;
 }
 
 function buildShareText(activeCase, won, attempts) {

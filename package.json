@@ -1,0 +1,10 @@
+{
+  "name": "icddle-india",
+  "version": "0.2.0",
+  "private": true,
+  "description": "ICDdle India frontend and file-backed adaptive backend prototype.",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check app.js && node --check server.js && node --check backend/aiCaseGenerator.js"
+  }
+}

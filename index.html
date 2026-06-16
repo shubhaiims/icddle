@@ -28,18 +28,20 @@
       <main class="game-layout">
         <section class="game-panel" aria-labelledby="caseTitle">
           <div class="case-kicker">
-            <span id="caseNumber">Case</span>
-            <span id="caseDate">India date</span>
+            <span>ICDDLE: 10 FREE DAILY ICD-11 CASES</span>
+            <span class="screen-meta"><span id="caseNumber">Case</span> <span id="caseDate">India date</span></span>
           </div>
 
           <div class="case-heading">
             <div>
-              <p class="eyebrow">Daily psychiatry puzzle</p>
-              <h1 id="caseTitle">What is the most likely ICD-11 diagnosis?</h1>
+              <h1 id="caseTitle">What could the diagnosis be?</h1>
             </div>
-            <div class="mode-control" role="tablist" aria-label="Game mode">
-              <button class="mode-button active" type="button" role="tab" aria-selected="true" data-mode="classic">Classic</button>
-              <button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="exam">Exam</button>
+            <div class="mode-row">
+              <div class="mode-control" role="tablist" aria-label="Game mode">
+                <button class="mode-button active" type="button" role="tab" aria-selected="true" data-mode="classic">Classic</button>
+                <button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="exam">Hard</button>
+              </div>
+              <button class="help-button" type="button" aria-label="Classic shows suggestions immediately. Hard waits until you type three letters.">?</button>
             </div>
           </div>
 
@@ -73,6 +75,10 @@
           <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
           <div class="guess-history" id="guessHistory" aria-label="Previous guesses"></div>
 
+          <p class="game-disclaimer">
+            ICDdle India is for learning and revision. Cases are simplified and may contain inaccuracies. This is not a clinical or diagnostic tool.
+          </p>
+
           <section class="result-panel hidden" id="resultPanel" aria-labelledby="resultTitle">
             <div>
               <p class="eyebrow" id="resultLabel">Result</p>
@@ -87,7 +93,7 @@
             </div>
             <div class="result-actions">
               <button class="secondary-button" type="button" id="shareButton">Share</button>
-              <button class="secondary-button" type="button" id="nextCaseButton">Practice Case</button>
+              <button class="secondary-button" type="button" id="nextCaseButton">Next Free Case</button>
             </div>
           </section>
         </section>
@@ -126,7 +132,7 @@
       <div class="modal-head">
         <div>
           <p class="eyebrow">Archive</p>
-          <h2>Practice Cases</h2>
+          <h2>Today&apos;s 10 Free Cases</h2>
         </div>
         <button class="icon-button" type="button" data-close="archiveModal" aria-label="Close archive">x</button>
       </div>

@@ -1,0 +1,312 @@
+[
+  {
+    "id": "atpd-ed",
+    "setting": "Emergency psychiatry",
+    "focus": "Acute psychosis",
+    "diagnosisId": "6a23",
+    "difficulty": "mixed",
+    "variants": {
+      "age": ["21", "22", "24"],
+      "role": ["engineering student", "BSc student", "hostel resident"],
+      "city": ["Pune", "Indore", "Nagpur"]
+    },
+    "clues": [
+      "A {age}-year-old {role} from {city} is brought by family after three days of sleeplessness, fearfulness, and saying neighbours are monitoring him.",
+      "He is perplexed, shifts quickly from anxiety to laughter, and reports unfamiliar voices commenting on his actions.",
+      "Collateral history suggests good academic and social functioning until this week.",
+      "There is no sustained elevated mood, no prominent depressive syndrome, and a urine screen is negative for common substances.",
+      "The symptoms are polymorphic, rapidly changing, and began abruptly after an interpersonal stressor.",
+      "The presentation points to a brief non-organic psychotic episode with acute onset and changing psychotic symptoms."
+    ],
+    "hardClues": [
+      "A {age}-year-old {role} from {city} has a sudden three-day behavioural change with suspiciousness and reduced sleep.",
+      "Affect and thought content shift during the interview, with intermittent second-person auditory phenomena.",
+      "Family describes no earlier decline in functioning.",
+      "Mood, substance, and acute medical screens do not provide a better primary explanation.",
+      "The syndrome is abrupt, polymorphic, and short in duration.",
+      "The high-yield anchor is acute onset primary psychosis with rapidly changing symptoms."
+    ],
+    "explanation": "Abrupt onset, rapidly changing psychotic symptoms, preserved prior functioning, and no clear substance, organic, or mood syndrome support ICD-11 6A23 Acute and Transient Psychotic Disorder.",
+    "differentials": ["Schizophrenia", "Bipolar type I disorder, current episode manic, with psychotic symptoms", "Delirium"],
+    "learning": "Short-duration psychosis needs collateral history, substance screen, medical assessment, risk review, and follow-up because the diagnosis can evolve."
+  },
+  {
+    "id": "alcohol-dependence-liaison",
+    "setting": "General hospital liaison",
+    "focus": "Substance use",
+    "diagnosisId": "6c40-2",
+    "difficulty": "easy",
+    "variants": {
+      "age": ["38", "42", "46"],
+      "role": ["auto-rickshaw driver", "shop worker", "security guard"],
+      "city": ["Chennai", "Bhopal", "Surat"]
+    },
+    "clues": [
+      "A {age}-year-old {role} from {city} is referred after repeated admissions for gastritis, tremulousness, and family conflict.",
+      "He says the first drink in the morning steadies his hands before work.",
+      "His spouse reports failed attempts to cut down, hidden bottles, and irritability when alcohol is not available.",
+      "He needs larger amounts than before and continues despite medical warnings.",
+      "Most earnings now go toward alcohol, and he has missed several days of work after binges.",
+      "Craving, withdrawal relief drinking, tolerance, salience, impaired control, and continued harmful use point to dependence."
+    ],
+    "hardClues": [
+      "A {age}-year-old {role} from {city} presents through a medical ward rather than a psychiatry OPD.",
+      "Family reports repeated failed attempts to reduce use and increasing priority of alcohol over work.",
+      "Morning use prevents tremulousness and irritability.",
+      "Tolerance and continued use despite health consequences are present.",
+      "The pattern is more than a single harmful episode.",
+      "The diagnostic anchor is a dependence syndrome involving impaired control and physiological features."
+    ],
+    "explanation": "The pattern includes craving, impaired control, tolerance, withdrawal, salience, and continued use despite harm, which fits ICD-11 6C40.2 Alcohol Dependence.",
+    "differentials": ["Hazardous alcohol use", "Single episode harmful alcohol use", "Alcohol withdrawal without dependence history"],
+    "learning": "Liaison psychiatry often meets alcohol dependence through gastrointestinal, hepatic, injury, or withdrawal presentations."
+  },
+  {
+    "id": "ocd-student",
+    "setting": "Urban OPD",
+    "focus": "Anxiety and compulsions",
+    "diagnosisId": "6b20-0",
+    "difficulty": "easy",
+    "variants": {
+      "age": ["18", "19", "20"],
+      "exam": ["NEET", "JEE", "university"],
+      "city": ["Kota", "Delhi", "Patna"]
+    },
+    "clues": [
+      "A {age}-year-old {exam} aspirant from {city} spends four to five hours daily washing hands and cleaning the study table.",
+      "She describes repeated intrusive thoughts that books are contaminated and that parents may fall ill if she touches them.",
+      "She recognizes the thoughts as excessive but feels intense anxiety until she performs the cleaning sequence.",
+      "There are no fixed delusions, hallucinations, manic symptoms, or substance use.",
+      "Her preparation has suffered because rituals delay sleep and classes.",
+      "Ego-dystonic intrusive thoughts with repetitive anxiety-reducing rituals and fair insight point to this diagnosis."
+    ],
+    "hardClues": [
+      "A {age}-year-old student from {city} reports a time-consuming private routine before studying.",
+      "The trigger is an intrusive contamination idea that she tries to neutralize.",
+      "She can say the fear is probably excessive, but anxiety remains high.",
+      "No psychosis, mania, intoxication, or neurological syndrome is evident.",
+      "Functioning is impaired by the repetitive acts.",
+      "The anchor is obsession plus compulsion with fair to good insight."
+    ],
+    "explanation": "Recurrent intrusive contamination thoughts, fair to good insight, distress, and time-consuming compulsive washing support ICD-11 6B20.0 Obsessive-Compulsive Disorder with Fair to Good Insight.",
+    "differentials": ["Psychotic disorder", "Body dysmorphic disorder", "Obsessive-compulsive personality traits"],
+    "learning": "The diagnostic anchor is the obsession-compulsion cycle, insight, distress, and functional impairment."
+  },
+  {
+    "id": "dissociative-seizures-school",
+    "setting": "Child and adolescent clinic",
+    "focus": "Dissociation",
+    "diagnosisId": "6b60-4",
+    "difficulty": "mixed",
+    "variants": {
+      "age": ["16", "17", "18"],
+      "city": ["Lucknow", "Ranchi", "Guwahati"],
+      "stressor": ["family conflict", "school pressure", "marriage-related arguments"]
+    },
+    "clues": [
+      "A {age}-year-old student from {city} has repeated shaking episodes at school after {stressor}.",
+      "During episodes, eyes are often closed and limb movements are asynchronous.",
+      "There is no tongue bite, incontinence, cyanosis, or prolonged post-ictal confusion.",
+      "Neurological examination and initial investigations are unremarkable.",
+      "She is distressed by conflict and feels unable to speak about it directly.",
+      "Convulsion-like episodes with features inconsistent with epileptic seizures suggest this dissociative diagnosis."
+    ],
+    "hardClues": [
+      "A {age}-year-old from {city} has recurrent paroxysmal events in a psychosocially loaded setting.",
+      "Observed semiology does not fit a typical epileptic seizure pattern.",
+      "Recovery is rapid and post-ictal confusion is absent.",
+      "Initial neurological review does not support epilepsy.",
+      "The formulation avoids blame or intentionality.",
+      "The anchor is non-epileptic seizure-like events within dissociative neurological symptom disorder."
+    ],
+    "explanation": "The episode pattern, stress linkage, and features inconsistent with epilepsy support ICD-11 6B60.4 Dissociative Neurological Symptom Disorder, with Non-Epileptic Seizures after medical causes are considered.",
+    "differentials": ["Epilepsy", "Syncope", "Panic attacks"],
+    "learning": "Assessment still needs medical review, risk assessment, family work, and a validating explanation."
+  },
+  {
+    "id": "mania-psychosis-founder",
+    "setting": "Psychiatry emergency",
+    "focus": "Mood and psychosis",
+    "diagnosisId": "6a60-1",
+    "difficulty": "mixed",
+    "variants": {
+      "age": ["27", "28", "31"],
+      "role": ["startup founder", "sales manager", "political volunteer"],
+      "city": ["Bengaluru", "Mumbai", "Gurugram"]
+    },
+    "clues": [
+      "A {age}-year-old {role} from {city} is brought after five days of almost no sleep and nonstop calls to colleagues.",
+      "He speaks rapidly, shifts topics, and says he has been chosen for a national mission.",
+      "He spent several lakh rupees impulsively and became aggressive when family tried to stop him.",
+      "He hears a divine voice approving his mission, and the grandiose beliefs are mood congruent.",
+      "There was a similar self-limited episode two years ago followed by months of normal functioning.",
+      "Elevated mood, increased energy, decreased need for sleep, disinhibition, and psychosis indicate this current episode."
+    ],
+    "hardClues": [
+      "A {age}-year-old from {city} has sharply increased goal-directed activity and reduced sleep.",
+      "Speech is pressured, plans are grandiose, and spending is risky.",
+      "Psychotic content is congruent with the expansive mood state.",
+      "There is marked impairment and family containment is failing.",
+      "A prior episodic course is described.",
+      "The anchor is type I bipolar illness, current manic episode with psychotic symptoms."
+    ],
+    "explanation": "A manic syndrome with psychotic symptoms, marked impairment, and a past episodic course supports ICD-11 6A60.1 Bipolar Type I Disorder, Current Episode Manic, with Psychotic Symptoms.",
+    "differentials": ["Schizoaffective disorder", "Acute and transient psychotic disorder", "Substance-induced mood disorder"],
+    "learning": "Mood congruence, episodic course, sleep change, and increased goal-directed activity help separate mania with psychosis from primary psychotic disorders."
+  },
+  {
+    "id": "delirium-medical-ward",
+    "setting": "Medicine ward",
+    "focus": "Organic psychiatry",
+    "diagnosisId": "6d70-0",
+    "difficulty": "easy",
+    "variants": {
+      "age": ["64", "68", "72"],
+      "illness": ["dengue fever", "pneumonia", "urosepsis"],
+      "city": ["Jaipur", "Kolkata", "Thiruvananthapuram"]
+    },
+    "clues": [
+      "A {age}-year-old patient admitted with {illness} becomes restless and suspicious on the third hospital night.",
+      "He cannot sustain attention for serial subtraction and repeatedly asks where he is.",
+      "Symptoms fluctuate, with clearer periods in the morning and worsening confusion after sunset.",
+      "He misidentifies an IV stand as a person and tries to pull out the cannula.",
+      "There is no prior psychotic illness, and the onset is acute during systemic illness.",
+      "Acute fluctuating disturbance of attention, awareness, orientation, and perception points to this organic syndrome."
+    ],
+    "hardClues": [
+      "A {age}-year-old admitted for {illness} develops a sudden behavioural change in the ward.",
+      "Attention is impaired more consistently than memory alone.",
+      "Mental state varies across the day and worsens at night.",
+      "Transient misperceptions and disorientation occur.",
+      "The syndrome appears during acute systemic disease.",
+      "The anchor is acute fluctuating disturbance of attention and awareness due to medical illness."
+    ],
+    "explanation": "Acute onset, fluctuation, impaired attention, disorientation, perceptual disturbance, and concurrent medical illness support ICD-11 6D70.0 Delirium due to disease classified elsewhere.",
+    "differentials": ["Dementia", "Brief psychotic disorder", "Mania"],
+    "learning": "The core bedside test is attention, not just orientation."
+  },
+  {
+    "id": "opioid-dependence-clinic",
+    "setting": "De-addiction clinic",
+    "focus": "Opioid use",
+    "diagnosisId": "6c43-2",
+    "difficulty": "mixed",
+    "variants": {
+      "age": ["23", "24", "27"],
+      "region": ["rural Punjab", "western Uttar Pradesh", "Delhi NCR"],
+      "route": ["chasing heroin", "injecting heroin", "using pharmaceutical opioids"]
+    },
+    "clues": [
+      "A {age}-year-old man from {region} presents with family after three years of {route}.",
+      "He reports strong craving and spends most afternoons arranging money or supply.",
+      "When he stops, he develops body aches, loose stools, yawning, lacrimation, and insomnia.",
+      "He now needs more than before to get the same effect.",
+      "He has dropped out of a course and continues despite debts and family conflict.",
+      "Craving, withdrawal, tolerance, impaired control, salience, and continued harm point to opioid dependence."
+    ],
+    "hardClues": [
+      "A {age}-year-old from {region} presents through family pressure rather than self-referral.",
+      "Use has become central to daily planning and finances.",
+      "Stopping causes a characteristic autonomic and pain withdrawal picture.",
+      "Tolerance and continued use despite harm are present.",
+      "The syndrome is not just intoxication or experimentation.",
+      "The anchor is opioid dependence with impaired control and physiological features."
+    ],
+    "explanation": "The cluster of craving, withdrawal, tolerance, salience, impaired control, and continued use despite harm supports ICD-11 6C43.2 Opioid Dependence.",
+    "differentials": ["Harmful opioid use", "Opioid intoxication", "Antisocial behaviour without dependence syndrome"],
+    "learning": "India-focused substance cases should include route, withdrawal, infectious risk, family context, and access to evidence-based de-addiction care."
+  },
+  {
+    "id": "severe-depression-perinatal",
+    "setting": "Perinatal psychiatry OPD",
+    "focus": "Depressive disorders",
+    "diagnosisId": "6a70-3",
+    "difficulty": "mixed",
+    "variants": {
+      "age": ["29", "31", "34"],
+      "city": ["Jaipur", "Ahmedabad", "Mysuru"],
+      "month": ["six", "eight", "nine"]
+    },
+    "clues": [
+      "A {age}-year-old woman from {city} presents {month} months after delivery with persistent low mood and loss of interest.",
+      "She has early morning awakening, reduced appetite, fatigue, poor concentration, and guilt.",
+      "She has stopped meeting relatives and struggles with routine infant care despite family support.",
+      "She denies hallucinations, delusions, elevated mood, or substance use.",
+      "She has recurrent passive death wishes but no psychotic symptoms.",
+      "A severe depressive syndrome with marked functional impairment and no psychosis is the best fit."
+    ],
+    "hardClues": [
+      "A {age}-year-old from {city} has a sustained postpartum mood syndrome rather than brief adjustment distress.",
+      "Biological symptoms and cognitive guilt are prominent.",
+      "Role functioning and infant care are significantly affected.",
+      "There is passive death wish but no hallucination, delusion, or manic history.",
+      "Severity is high, but psychotic symptoms are absent.",
+      "The anchor is severe single episode depression without psychosis."
+    ],
+    "explanation": "Multiple biological and cognitive depressive symptoms, functional impairment, and passive death wishes without psychosis support ICD-11 6A70.3 Single Episode Depressive Disorder, Severe, without Psychotic Symptoms.",
+    "differentials": ["Postpartum psychosis", "Adjustment disorder", "Hypothyroidism"],
+    "learning": "Perinatal context changes risk assessment and care planning, but diagnosis still depends on depressive syndrome severity and psychotic symptoms."
+  },
+  {
+    "id": "panic-ed",
+    "setting": "Emergency medicine referral",
+    "focus": "Panic attacks",
+    "diagnosisId": "6b01",
+    "difficulty": "easy",
+    "variants": {
+      "age": ["24", "26", "29"],
+      "role": ["software engineer", "nursing student", "bank employee"],
+      "city": ["Hyderabad", "Noida", "Coimbatore"]
+    },
+    "clues": [
+      "A {age}-year-old {role} from {city} has visited the emergency department three times for sudden chest tightness and breathlessness.",
+      "Each spell peaks within minutes with palpitations, sweating, trembling, dizziness, and fear of dying.",
+      "ECG, thyroid testing, and basic medical evaluation have not shown a cardiac or endocrine cause.",
+      "The attacks now occur unexpectedly, including once while sitting quietly at home.",
+      "He has started avoiding public transport and checks the nearest hospital route before leaving home.",
+      "Recurrent unexpected panic attacks followed by persistent worry and behaviour change point to this anxiety disorder."
+    ],
+    "hardClues": [
+      "A {age}-year-old from {city} repeatedly presents with abrupt autonomic surges.",
+      "The episodes peak rapidly and include catastrophic misinterpretation.",
+      "Medical evaluation does not explain the events.",
+      "Some attacks are unexpected rather than only situational.",
+      "Anticipatory anxiety and avoidance have developed.",
+      "The anchor is recurrent unexpected panic attacks plus persistent worry or behaviour change."
+    ],
+    "explanation": "Recurrent unexpected panic attacks, negative relevant medical evaluation, ongoing fear of further attacks, and avoidance support ICD-11 6B01 Panic Disorder.",
+    "differentials": ["Cardiac arrhythmia", "Hyperthyroidism", "Social anxiety disorder"],
+    "learning": "Panic disorder often presents first in emergency or medical settings."
+  },
+  {
+    "id": "social-anxiety-viva",
+    "setting": "Medical college counselling clinic",
+    "focus": "Social fear",
+    "diagnosisId": "6b04",
+    "difficulty": "hard",
+    "variants": {
+      "age": ["20", "21", "23"],
+      "course": ["MBBS", "BSc nursing", "law"],
+      "city": ["Kochi", "Manipal", "Pune"]
+    },
+    "clues": [
+      "A {age}-year-old {course} student from {city} seeks help after repeatedly skipping presentations.",
+      "Before viva sessions, he worries others will notice his shaking voice and think he is incompetent.",
+      "He avoids asking questions in seminars, eating in the canteen, and answering phone calls in front of hostel mates.",
+      "The fear has persisted since first year and is not limited to one recent stressful event.",
+      "There are no unexpected panic attacks outside social scrutiny and no psychotic symptoms.",
+      "Persistent fear of negative evaluation with avoidance and impairment in social-performance situations is the key diagnostic anchor."
+    ],
+    "hardClues": [
+      "A {age}-year-old student from {city} repeatedly avoids academic situations involving observation.",
+      "The feared outcome is humiliation and negative judgement rather than physical danger.",
+      "Avoidance extends to informal peer settings where scrutiny is possible.",
+      "Symptoms are persistent and impair training.",
+      "Panic-like symptoms are situational, not unexpected.",
+      "The anchor is fear of scrutiny and negative evaluation in social situations."
+    ],
+    "explanation": "Marked fear of scrutiny, negative evaluation, avoidance, persistence, and academic-social impairment support ICD-11 6B04 Social Anxiety Disorder.",
+    "differentials": ["Panic disorder", "Agoraphobia", "Autism spectrum disorder"],
+    "learning": "The core memory hook is fear of scrutiny and negative evaluation, not simply shyness or one bad performance."
+  }
+]

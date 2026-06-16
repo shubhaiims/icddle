@@ -1,0 +1,72 @@
+[
+  {
+    "id": "6a23",
+    "code": "ICD-11 6A23",
+    "name": "Acute and Transient Psychotic Disorder",
+    "coreCriteria": ["Abrupt onset", "Rapidly changing psychotic symptoms", "Not better explained by mood, substance, delirium, or medical cause"],
+    "questionStyles": ["onset", "differential", "essential criterion"]
+  },
+  {
+    "id": "6c40-2",
+    "code": "ICD-11 6C40.2",
+    "name": "Alcohol Dependence",
+    "coreCriteria": ["Impaired control", "Craving or salience", "Tolerance or withdrawal", "Continued use despite harm"],
+    "questionStyles": ["dependence cluster", "withdrawal clue", "differential"]
+  },
+  {
+    "id": "6b20-0",
+    "code": "ICD-11 6B20.0",
+    "name": "Obsessive-Compulsive Disorder with Fair to Good Insight",
+    "coreCriteria": ["Obsessions", "Compulsions or mental acts", "Fair to good insight", "Distress or impairment"],
+    "questionStyles": ["insight", "obsession-compulsion loop", "differential"]
+  },
+  {
+    "id": "6b60-4",
+    "code": "ICD-11 6B60.4",
+    "name": "Dissociative Neurological Symptom Disorder, with Non-Epileptic Seizures",
+    "coreCriteria": ["Seizure-like episodes", "Inconsistent with epilepsy after assessment", "Not intentionally produced"],
+    "questionStyles": ["key differentiator", "exclusion", "non-stigmatizing formulation"]
+  },
+  {
+    "id": "6a60-1",
+    "code": "ICD-11 6A60.1",
+    "name": "Bipolar Type I Disorder, Current Episode Manic, with Psychotic Symptoms",
+    "coreCriteria": ["Manic syndrome", "Increased energy or activity", "Psychotic symptoms in manic context"],
+    "questionStyles": ["mood congruence", "mania anchor", "differential"]
+  },
+  {
+    "id": "6d70-0",
+    "code": "ICD-11 6D70.0",
+    "name": "Delirium due to Disease Classified Elsewhere",
+    "coreCriteria": ["Acute onset", "Fluctuating course", "Impaired attention and awareness", "Medical etiology"],
+    "questionStyles": ["attention", "fluctuation", "medical cause"]
+  },
+  {
+    "id": "6c43-2",
+    "code": "ICD-11 6C43.2",
+    "name": "Opioid Dependence",
+    "coreCriteria": ["Craving", "Impaired control", "Withdrawal or tolerance", "Continued use despite harm"],
+    "questionStyles": ["withdrawal", "dependence cluster", "differential"]
+  },
+  {
+    "id": "6a70-3",
+    "code": "ICD-11 6A70.3",
+    "name": "Single Episode Depressive Disorder, Severe, without Psychotic Symptoms",
+    "coreCriteria": ["Severe depressive syndrome", "Marked impairment", "No psychosis", "No past mania or hypomania"],
+    "questionStyles": ["severity", "psychosis exclusion", "bipolar exclusion"]
+  },
+  {
+    "id": "6b01",
+    "code": "ICD-11 6B01",
+    "name": "Panic Disorder",
+    "coreCriteria": ["Recurrent unexpected panic attacks", "Persistent worry or behaviour change", "Medical causes considered"],
+    "questionStyles": ["unexpected attacks", "behaviour change", "medical differential"]
+  },
+  {
+    "id": "6b04",
+    "code": "ICD-11 6B04",
+    "name": "Social Anxiety Disorder",
+    "coreCriteria": ["Fear of scrutiny", "Fear of negative evaluation", "Avoidance", "Functional impairment"],
+    "questionStyles": ["negative evaluation", "situational panic", "differential"]
+  }
+]
