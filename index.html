@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="ICDdle India is a daily educational psychiatry diagnosis puzzle built around Indian clinical settings and ICD-11 answers."
+    >
+    <title>ICDdle India</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="ICDdle India home">
+          <img src="assets/logo.svg" width="36" height="36" alt="" aria-hidden="true">
+          <span>ICD<span>dle</span> India</span>
+        </a>
+        <nav class="header-actions" aria-label="Primary">
+          <button class="ghost-button" type="button" id="todayButton">Today</button>
+          <button class="ghost-button" type="button" id="archiveButton">Archive</button>
+          <button class="ghost-button" type="button" id="statsButton">Stats</button>
+        </nav>
+      </header>
+
+      <main class="game-layout">
+        <section class="game-panel" aria-labelledby="caseTitle">
+          <div class="case-kicker">
+            <span id="caseNumber">Case</span>
+            <span id="caseDate">India date</span>
+          </div>
+
+          <div class="case-heading">
+            <div>
+              <p class="eyebrow">Daily psychiatry puzzle</p>
+              <h1 id="caseTitle">What is the most likely ICD-11 diagnosis?</h1>
+            </div>
+            <div class="mode-control" role="tablist" aria-label="Game mode">
+              <button class="mode-button active" type="button" role="tab" aria-selected="true" data-mode="classic">Classic</button>
+              <button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="exam">Exam</button>
+            </div>
+          </div>
+
+          <div class="case-meta" aria-label="Case metadata">
+            <span id="caseSetting">Setting</span>
+            <span id="caseFocus">Focus</span>
+          </div>
+
+          <div class="progress-track" aria-label="Clues revealed">
+            <div id="progressBar"></div>
+          </div>
+
+          <ol class="clue-list" id="clueList"></ol>
+
+          <form class="guess-form" id="guessForm" autocomplete="off">
+            <div class="search-wrap">
+              <label class="sr-only" for="guessInput">Diagnosis</label>
+              <input
+                id="guessInput"
+                type="text"
+                placeholder="Enter a possible ICD-11 diagnosis..."
+                aria-controls="suggestionList"
+                aria-autocomplete="list"
+                aria-expanded="false"
+              >
+              <ul class="suggestions" id="suggestionList" role="listbox"></ul>
+            </div>
+            <button class="submit-button" type="submit">Submit</button>
+          </form>
+
+          <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+          <div class="guess-history" id="guessHistory" aria-label="Previous guesses"></div>
+
+          <section class="result-panel hidden" id="resultPanel" aria-labelledby="resultTitle">
+            <div>
+              <p class="eyebrow" id="resultLabel">Result</p>
+              <h2 id="resultTitle">Diagnosis</h2>
+              <p id="resultText"></p>
+              <div class="revision-card" id="revisionCard">
+                <p class="eyebrow">Quick revision</p>
+                <h3 id="revisionQuestion"></h3>
+                <div class="revision-options" id="revisionOptions"></div>
+                <p class="revision-feedback" id="revisionFeedback" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+            <div class="result-actions">
+              <button class="secondary-button" type="button" id="shareButton">Share</button>
+              <button class="secondary-button" type="button" id="nextCaseButton">Practice Case</button>
+            </div>
+          </section>
+        </section>
+
+        <aside class="side-panel" aria-label="Case learning panel">
+          <img class="side-asset" src="assets/logo.svg" width="96" height="96" alt="">
+          <div>
+            <p class="eyebrow">India focus</p>
+            <h2 id="learningTitle">OPD, ward, emergency, and exam-room reasoning.</h2>
+            <p id="learningText">
+              Cases use Indian clinical settings and original teaching clues. They are simplified for learning and play.
+            </p>
+          </div>
+          <div class="stat-grid" aria-label="Current puzzle state">
+            <div>
+              <span id="attemptCount">0</span>
+              <small>Guesses</small>
+            </div>
+            <div>
+              <span id="clueCount">1/6</span>
+              <small>Clues</small>
+            </div>
+            <div>
+              <span id="modeLabel">Classic</span>
+              <small>Mode</small>
+            </div>
+          </div>
+          <div class="safety-note">
+            ICDdle India is for education and revision. It is not a clinical, diagnostic, or treatment tool.
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <dialog class="modal" id="archiveModal">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Archive</p>
+          <h2>Practice Cases</h2>
+        </div>
+        <button class="icon-button" type="button" data-close="archiveModal" aria-label="Close archive">x</button>
+      </div>
+      <div class="archive-grid" id="archiveGrid"></div>
+    </dialog>
+
+    <dialog class="modal" id="statsModal">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Stats</p>
+          <h2>Your ICDdle Record</h2>
+        </div>
+        <button class="icon-button" type="button" data-close="statsModal" aria-label="Close stats">x</button>
+      </div>
+      <div class="stats-list" id="statsList"></div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

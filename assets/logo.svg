@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">ICDdle India logo</title>
+  <desc id="desc">A geometric clinical puzzle mark with saffron, teal, and green accents.</desc>
+  <rect width="96" height="96" rx="18" fill="#191917"/>
+  <path d="M23 27h50v14H23z" fill="#f5a524"/>
+  <path d="M23 41h50v14H23z" fill="#f8f3e8"/>
+  <path d="M23 55h50v14H23z" fill="#83d17d"/>
+  <circle cx="48" cy="48" r="13" fill="#191917" stroke="#35d0ba" stroke-width="5"/>
+  <path d="M30 48h13l5-9 7 18 5-9h7" fill="none" stroke="#35d0ba" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
