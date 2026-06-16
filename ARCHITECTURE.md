@@ -9,6 +9,7 @@ Files:
 - `index.html`
 - `styles.css`
 - `app.js`
+- `frontend/apiClient.js`
 - `assets/logo.svg`
 
 Responsibilities:
@@ -19,6 +20,7 @@ Responsibilities:
 - Reveal clues, validate ICD-11 guesses, show the answer, and ask one revision question.
 - Send completion and revision events back to the backend.
 - Fall back to embedded sample cases if opened directly as a static file.
+- Keep all browser-to-server calls inside `frontend/apiClient.js`.
 
 Important API calls:
 
@@ -32,6 +34,7 @@ Files:
 
 - `server.js`
 - `api/` Vercel serverless function entrypoints
+- `backend/api/handlers.js` shared backend route handlers
 - `backend/aiCaseGenerator.js`
 - `backend/data/case-templates.json`
 - `backend/data/diagnosis-rules.json`

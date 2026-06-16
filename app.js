@@ -1109,9 +1109,10 @@ function updateStats(won) {
 
 async function loadDailyCases() {
   try {
-    const response = await fetch(`/api/daily-cases?userId=${encodeURIComponent(appState.userId)}&mode=${encodeURIComponent(appState.mode)}`);
-    if (!response.ok) throw new Error("Daily case API unavailable");
-    const payload = await response.json();
+    const payload = await window.ICDdleApi.getDailyCases({
+      userId: appState.userId,
+      mode: appState.mode
+    });
     if (!Array.isArray(payload.cases) || payload.cases.length === 0) {
       throw new Error("Daily case API returned no cases");
     }
@@ -1148,14 +1149,10 @@ async function logInteraction(payload) {
   if (!appState.backendOnline) return;
 
   try {
-    await fetch("/api/interactions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...payload,
-        userId: appState.userId,
-        date: appState.dailyDate
-      })
+    await window.ICDdleApi.recordInteraction({
+      ...payload,
+      userId: appState.userId,
+      date: appState.dailyDate
     });
   } catch (error) {
     appState.backendOnline = false;

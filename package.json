@@ -5,6 +5,6 @@
   "description": "ICDdle India frontend and file-backed adaptive backend prototype.",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check app.js && node --check server.js && node --check backend/aiCaseGenerator.js && node --check api/daily-cases.js && node --check api/interactions.js && node --check api/health.js"
+    "check": "node --check app.js && node --check frontend/apiClient.js && node --check server.js && node --check backend/aiCaseGenerator.js && node --check backend/api/handlers.js && node --check api/daily-cases.js && node --check api/interactions.js && node --check api/health.js"
   }
 }

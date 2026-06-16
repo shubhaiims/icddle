@@ -35,6 +35,8 @@ This MVP changes the product direction for Indian psychiatry learners:
 - `assets/logo.svg` - original visual mark.
 - `CASE_AUTHORING.md` - ICD-11 case-writing guide for AI-assisted case generation.
 - `server.js` - dependency-free Node backend and static file server.
+- `frontend/apiClient.js` - browser-side API client used by `app.js`.
+- `backend/api/handlers.js` - shared backend API logic used by local Node and Vercel.
 - `backend/` - file-backed daily generation, interaction storage, and adaptive case rules.
 - `ARCHITECTURE.md` - frontend/backend split and AI generation boundary.
 

@@ -1,7 +1,11 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const { getDailyCases, recordInteraction } = require("./backend/aiCaseGenerator");
+const {
+  getDailyCasesPayload,
+  getHealth,
+  recordInteractionPayload
+} = require("./backend/api/handlers");
 
 const PORT = Number(process.env.PORT || 3000);
 const ROOT = __dirname;
@@ -21,20 +25,16 @@ const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
 
     if (req.method === "GET" && url.pathname === "/api/health") {
-      return sendJson(res, { ok: true, service: "icddle-backend" });
+      return sendJson(res, getHealth());
     }
 
     if (req.method === "GET" && url.pathname === "/api/daily-cases") {
-      const payload = getDailyCases({
-        userId: url.searchParams.get("userId"),
-        mode: url.searchParams.get("mode") || "classic"
-      });
-      return sendJson(res, payload);
+      return sendJson(res, getDailyCasesPayload(Object.fromEntries(url.searchParams.entries())));
     }
 
     if (req.method === "POST" && url.pathname === "/api/interactions") {
       const body = await readJson(req);
-      return sendJson(res, recordInteraction(body));
+      return sendJson(res, recordInteractionPayload(body));
     }
 
     if (req.method !== "GET") {
